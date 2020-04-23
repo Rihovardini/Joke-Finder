@@ -1,0 +1,30 @@
+<form class="search">
+  <div class="search__container" [ngSwitch]="option" *ngFor="let option of optionNames">
+    <div class="search__button">
+      <label class="button-label">
+        <div class="radio-container">
+          <input (click)="setActive(option)" type="radio" name="radio">
+          <div class="circle"></div>
+          <div class="inner-circle"></div>
+        </div>
+        <div class="radio-content">{{option}}</div>
+      </label>
+    </div>
+
+    <ng-container *ngSwitchCase="searchOptions.fromCategories" class="categories">
+      <div *ngIf="activeSearchType === searchOptions.fromCategories" class="search__chips">
+        <button *ngFor="let category of (categories$ | async)" class="chip" [ngClass]="{'active-chip': category === query}"
+          (click)="setCategory(category)">
+          {{category}}
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="searchOptions.search" class="search">
+      <input *ngIf="activeSearchType === searchOptions.search" class="search__input" placeholder="Free text search..."
+        [ngModelOptions]="{standalone: true}" [(ngModel)]="query">
+    </ng-container>
+  </div>
+
+  <button [disabled]="!activeSearchType" (click)="submit()" class="search__submit">Get a joke</button>
+</form>

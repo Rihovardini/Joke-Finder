@@ -1,0 +1,94 @@
+@import "src/assets/styles/variables";
+
+.favorites {
+  background-color: $grey-lighter;
+  height: 100%;
+  padding: $tablet-padding;
+  box-sizing: border-box;
+  overflow-y: auto;
+  width: 480px;
+
+  &__wrapper {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+
+  &__back-nav {
+    display: none;
+    position: relative;
+  }
+
+  &__favorite-icon {
+    position: absolute;
+  }
+
+  &__favorite-text {
+    font-size: $font-size3;
+    line-height: $line-height2;
+    color: $grey;
+    padding-left: 38px;
+  }
+
+  &__title {
+    font-size: $font-size3;
+    line-height: $line-height2;
+    color: $grey;
+  }
+
+  &__joke {
+    margin-bottom: 20px;
+  }
+
+  &__no-result {
+    text-align: center;
+  }
+}
+
+::ng-deep {
+  .favorites {
+    .joke {
+      background-color: $white !important;
+
+      &__icon-wrapper {
+        background-color: $grey-lighter !important;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .favorites {
+      &__wrapper {
+        display: flex;
+        justify-content: flex-end;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: absolute;
+        right: 0;
+        }
+  
+        &__header {
+          justify-content: flex-end !important;
+        }
+  
+        &__back-nav {
+          display: block !important;
+        }
+  
+        &__title {
+          display: none !important;
+        }
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      .favorites {
+        padding: $mobile-padding !important;
+        width: 100% !important;
+      }
+    }  
+}

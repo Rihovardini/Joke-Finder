@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(assets/fonts/Roboto/Roboto-Thin.ttf), format('truetype');
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
