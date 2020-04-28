@@ -1,4 +1,4 @@
-<form class="search">
+<form [formGroup]="searchForm" class="search">
   <div class="search__container" [ngSwitch]="option" *ngFor="let option of optionNames">
     <div class="search__button">
       <label class="button-label">
@@ -13,7 +13,7 @@
 
     <ng-container *ngSwitchCase="searchOptions.fromCategories" class="categories">
       <div *ngIf="activeSearchType === searchOptions.fromCategories" class="search__chips">
-        <button *ngFor="let category of (categories$ | async)" class="chip" [ngClass]="{'active-chip': category === query}"
+        <button *ngFor="let category of (categories$ | async)" class="chip" [ngClass]="{'active-chip': category === searchForm.get('category').value}"
           (click)="setCategory(category)">
           {{category}}
         </button>
@@ -22,9 +22,9 @@
 
     <ng-container *ngSwitchCase="searchOptions.search" class="search">
       <input *ngIf="activeSearchType === searchOptions.search" class="search__input" placeholder="Free text search..."
-        [ngModelOptions]="{standalone: true}" [(ngModel)]="query">
+        formControlName="query">
     </ng-container>
   </div>
 
-  <button [disabled]="!activeSearchType" (click)="submit()" class="search__submit">Get a joke</button>
+  <button (click)="submit()" class="search__submit">Get a joke</button>
 </form>

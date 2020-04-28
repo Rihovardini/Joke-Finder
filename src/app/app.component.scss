@@ -29,6 +29,11 @@
     margin-top: 30px;
   }
 
+  &__spinner {
+    display: flex;
+    justify-content: center;
+  }
+
   &__joke {
     margin-bottom: 20px;
   }

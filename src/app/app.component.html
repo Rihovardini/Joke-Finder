@@ -2,7 +2,7 @@
   <main class="app__main">
     <div class="app__project-menu">
       <h3 class="app__project-name">MSI 2020</h3>
-      <div (click)="toogleFavoritesSideBar()" class="app__favorite-nav">
+      <div (click)="toogleFavouritesSideBar()" class="app__favorite-nav">
         <svg class="app__favorite-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <circle cx="14" cy="14" r="14" fill="#333333" />
@@ -16,12 +16,20 @@
     <h2 class="app__sub-title">Let’s try to find a joke for you:</h2>
     <app-search></app-search>
     <section class="app__jokes-list">
-      <div *ngFor="let joke of (jokes$ | async)" class="app__joke">
-        <app-joke [joke]="joke"></app-joke>
-      </div>
+      <ng-container *ngIf="!(loading$ | async); else spinner">
+        <div *ngFor="let joke of (jokes$ | async)" class="app__joke">
+          <app-joke [joke]="joke"></app-joke>
+        </div>
+      </ng-container>
     </section>
   </main>
   <div [ngClass]="{'app__open-sidebar': isSideBarOpen}" class="app__favorite-jokes">
-    <app-favorites (closeBar)="toogleFavoritesSideBar()"></app-favorites>
+    <app-favourites  (closeBar)="toogleFavouritesSideBar()"></app-favourites>
   </div>
 </div>
+<app-snackbar></app-snackbar>
+<ng-template #spinner>
+  <div class="app__spinner">
+    <app-spinner></app-spinner>
+  </div>
+</ng-template>

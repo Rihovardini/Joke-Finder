@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
 import { DataSourceService } from '../../services/data-source.service';
-import { SearchOptions } from './search.constants';
+import { SearchOptions, nonEmpty, SearchValidationMessages } from './search.constants';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SnackbarService } from '../../services/snackbar.service';
+import { AlertStatus } from '../../constants/alert-status';
 
 @Component({
   selector: 'app-search',
@@ -10,34 +13,73 @@ import { SearchOptions } from './search.constants';
 })
 export class SearchComponent {
   public activeSearchType: string;
-  public query: string;
+  public searchForm = this.buildSearchForm();
+  public isSubmitted = false;
 
   public readonly categories$ = this.dataSource.categories$;
   public readonly optionNames = [SearchOptions.random, SearchOptions.fromCategories, SearchOptions.search];
   public readonly searchOptions = SearchOptions;
 
-  constructor(private dataSource: DataSourceService) { }
+  constructor(
+    private dataSource: DataSourceService,
+    private snackbarService: SnackbarService,
+    private formBuilder: FormBuilder) { }
 
   public setActive(option: string): void {
     this.activeSearchType = option;
-    this.query = '';
   }
 
   public setCategory(category: string): void {
-    this.query = category;
+    this.searchForm.patchValue({ category });
   }
 
   public submit(): void {
+    this.isSubmitted = true;
     switch (this.activeSearchType) {
       case this.searchOptions.random:
         this.dataSource.getRandomJoke()
         break;
       case this.searchOptions.fromCategories:
-        this. query && this.dataSource.getRandomJokeByCategory(this.query); 
+        this.getRandomJokeByCategory();
         break;
       case this.searchOptions.search:
-        this. query && this.dataSource.getJokesByQuery(this.query)
-        break;   
+        this.getJokeBySearch();
+        break;
     }
+  }
+
+  private getJokeBySearch(): void {
+    const queryControl = this.searchForm.get('query');
+
+    if(queryControl.valid) {
+      this.dataSource.getJokesByQuery(queryControl.value);
+    } else {
+      this.snackbarService.showMessage({
+        message: SearchValidationMessages.search, 
+        duration: 3000,
+        type: AlertStatus.warning
+       });
+    }
+  }
+
+  private getRandomJokeByCategory(): void {
+    const categoryControl = this.searchForm.get('category');
+
+    if (categoryControl.valid) {
+      this.dataSource.getRandomJokeByCategory(categoryControl.value);
+    } else {
+      this.snackbarService.showMessage({
+        message: SearchValidationMessages.category, 
+        duration: 3000,
+        type: AlertStatus.warning
+       });
+    }
+  }
+
+  private buildSearchForm(): FormGroup {
+    return this.formBuilder.group({
+      query: ['', [Validators.minLength(3), Validators.max(120), nonEmpty]],
+      category: ['', [nonEmpty]]
+    });
   }
 }

@@ -1,0 +1,48 @@
+@import "src/assets/styles/variables";
+
+@mixin show {
+  visibility: visible;
+  animation: fadein 0.5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+$bar-width: 340px;
+
+.snackbar {
+  visibility: hidden;
+  border-radius: 10px;
+  width: $bar-width;
+  position: fixed;
+  left: calc(50% - #{$bar-width/2});
+  bottom: 30px;
+  color: $black;
+  text-align: center;
+  padding: 16px;
+  font-size: $font-size5;
+  line-height: $line-height4;
+  z-index: 1;
+}
+
+.success {
+  background-color: $green;
+}
+
+.warning {
+  background-color: $yellow;
+  @include show;
+}
+
+.error {
+  background-color: $red;
+  @include show;
+}

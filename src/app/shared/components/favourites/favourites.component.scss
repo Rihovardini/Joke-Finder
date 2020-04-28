@@ -1,5 +1,15 @@
 @import "src/assets/styles/variables";
 
+@keyframes appearance {
+  0% {
+    transform: translate(100%);
+  }
+
+  100% {
+    transform: translate(0%);
+  }
+}
+
 .favorites {
   background-color: $grey-lighter;
   height: 100%;
@@ -54,6 +64,7 @@
   .favorites {
     .joke {
       background-color: $white !important;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
       &__icon-wrapper {
         background-color: $grey-lighter !important;
@@ -63,12 +74,15 @@
 
   @media only screen and (max-width: 1024px) {
     .favorites {
+      animation:  appearance 1s ease-out;
+
       &__wrapper {
         display: flex;
         justify-content: flex-end;
         background-color: rgba(0, 0, 0, 0.3);
         position: absolute;
         right: 0;
+        
         }
   
         &__header {
@@ -87,8 +101,13 @@
 
     @media only screen and (max-width: 600px) {
       .favorites {
+        animation:  appearance 1s ease-out;
         padding: $mobile-padding !important;
         width: 100% !important;
+
+        &__wrapper {
+          background-color: unset;
+        }
       }
     }  
 }

@@ -1,8 +1,8 @@
 <div class="favorites__wrapper">
-  <div class="favorites">
+  <div id="sidebar" class="favorites">
     <header class="favorites__header">
       <h3 class="favorites__title">Favourites</h3>
-      <div (click)='closeBar.emit()' class="favorites__back-nav">
+      <div (click)='closeBar.emit();' class="favorites__back-nav">
         <svg class="favorites__favorite-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"
           xmlns="http://www.w3.org/2000/svg">
           <circle cx="14" cy="14" r="14" fill="#333333" />
