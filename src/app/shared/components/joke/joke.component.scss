@@ -30,7 +30,7 @@
   }
 
   &__link-wrapper {
-    font-size: $font-size8;
+    font-size: $font-size10;
     color: $grey;
   }
 
@@ -40,9 +40,9 @@
   }
 
   &__text {
-    font-size: $font-size6;
+    font-size: $font-size14;
     margin-top: 5px;
-    line-height: $line-height3;
+    line-height: $line-height26;
     word-break: break-word;
   }
 
@@ -53,15 +53,15 @@
   }
 
   &__last-update {
-    font-size: $font-size8;
-    line-height: $line-height5;
+    font-size: $font-size10;
+    line-height: $line-height14;
     color: $grey;
   }
 
   &__tag {
     padding: 6px 20px;
-    font-size: $font-size8;
-    line-height: $line-height5;
+    font-size: $font-size10;
+    line-height: $line-height14;
     letter-spacing: 2px;
     background-color: $white;
     border-radius: 6px;

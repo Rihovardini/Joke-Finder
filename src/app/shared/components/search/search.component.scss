@@ -15,8 +15,8 @@
       border-radius: 6px;
       background-color:  $white;
       padding: 4px 13px;
-      font-size: $font-size7;
-      line-height: 16px;
+      font-size: $font-size12;
+      line-height: $line-height16;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: $grey;
@@ -53,8 +53,8 @@
     border-radius: 10px;
     padding: 10px 40px;
     border: none;  
-    font-size: $font-size5;
-    line-height: 22px;
+    font-size: $font-size16;
+    line-height: $line-height22;
     color: $white;
 
     &:focus {
@@ -113,7 +113,7 @@
 
       .radio-content {
         padding-left: 15px;
-        font-size: $font-size4;
+        font-size: $font-size18;
         
         &::first-letter {
           text-transform: capitalize;

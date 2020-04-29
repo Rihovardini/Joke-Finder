@@ -18,8 +18,8 @@
       outline: none;
       padding: 10px 40px;
       border: none;  
-      font-size: $font-size5;
-      line-height: 22px;
+      font-size: $font-size16;
+      line-height: $line-height22;
       color: $white;
     }
   }
@@ -37,7 +37,7 @@
           }
 
         &__text {
-          font-size: $font-size4 !important;
+          font-size: $font-size18 !important;
         }  
       }
     }

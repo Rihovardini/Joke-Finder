@@ -7,8 +7,8 @@
   &__project-menu {
     display: flex;
     justify-content: space-between;
-    font-size: $font-size3;
-    line-height: $line-height2;
+    font-size: $font-size20;
+    line-height: $line-height28;
     color: $grey;
   }
 
@@ -46,16 +46,16 @@
 
   &__title {
     margin-top: 78px;
-    font-size: $font-size1;
+    font-size: $font-size32;
   }
 
   &__sub-title {
-    font-size: $font-size2;
+    font-size: $font-size24;
     margin-bottom: 43px;
   }
 
   &__title, &__sub-title {
-    line-height: $line-height1;
+    line-height: $line-height44;
   }
 }
 
@@ -71,7 +71,7 @@
         }
 
       &__text {
-        font-size: $font-size4 !important;
+        font-size: $font-size18 !important;
         }  
       }
     }
