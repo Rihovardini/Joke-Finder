@@ -17,10 +17,13 @@
     <app-search></app-search>
     <section class="app__jokes-list">
       <ng-container *ngIf="!(loading$ | async); else spinner">
-        <div *ngFor="let joke of (jokes$ | async)" class="app__joke">
-          <app-joke [joke]="joke"></app-joke>
-        </div>
+        <app-pagination [jokes]="(jokes$ | async)"></app-pagination>
       </ng-container>
+      <ng-template #spinner>
+        <div class="app__spinner">
+          <app-spinner></app-spinner>
+        </div>
+      </ng-template>
     </section>
   </main>
   <div [ngClass]="{'app__open-sidebar': isSideBarOpen}" class="app__favorite-jokes">
@@ -28,8 +31,3 @@
   </div>
 </div>
 <app-snackbar></app-snackbar>
-<ng-template #spinner>
-  <div class="app__spinner">
-    <app-spinner></app-spinner>
-  </div>
-</ng-template>

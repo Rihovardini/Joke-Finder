@@ -1,0 +1,60 @@
+@import "src/assets/styles/variables";
+
+.pagination {
+  &__joke {
+    margin-top: 20px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+    button {
+      cursor: pointer;
+      margin-left: 10px;
+      background: $black;
+      border-radius: 10px;
+      outline: none;
+      padding: 10px 40px;
+      border: none;  
+      font-size: $font-size5;
+      line-height: 22px;
+      color: $white;
+    }
+  }
+}
+
+::ng-deep {
+  .pagination {
+    &__joke {
+      .joke {
+        padding: $joke-padding1 !important;
+
+        &__favorite-icon {
+          top: $joke-heart-position1 !important;
+          right: $joke-heart-position1 !important;
+          }
+
+        &__text {
+          font-size: $font-size4 !important;
+        }  
+      }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .pagination {
+      &__joke {
+        .joke {
+          padding: 40px 20px !important;
+
+          &__favorite-icon {
+            top: 20px !important;
+            right: 20px !important;
+          }
+        }
+      }
+    }
+  }
+}

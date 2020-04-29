@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AlertStatus } from '../../constants/alert-status';
 import { DataSourceService } from '../../services/data-source.service';
 import { SearchOptions, nonEmpty, SearchValidationMessages } from './search.constants';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SnackbarService } from '../../services/snackbar.service';
-import { AlertStatus } from '../../constants/alert-status';
 
 @Component({
   selector: 'app-search',
@@ -45,6 +45,13 @@ export class SearchComponent {
       case this.searchOptions.search:
         this.getJokeBySearch();
         break;
+      default: 
+        this.snackbarService.showMessage({
+          message: SearchValidationMessages.default,
+          duration: 3000,
+          type: AlertStatus.warning
+        })
+        break;  
     }
   }
 

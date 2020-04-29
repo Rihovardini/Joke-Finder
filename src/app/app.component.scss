@@ -34,10 +34,6 @@
     justify-content: center;
   }
 
-  &__joke {
-    margin-bottom: 20px;
-  }
-
   &__main {
     padding: $desktop-padding;
     width: 100%;
@@ -106,17 +102,6 @@
       &__main {
         padding: $mobile-padding !important;
         }
-
-      &__jokes-list {
-        .joke {
-          padding: 40px 20px !important;
-
-          &__favorite-icon {
-            top: 20px !important;
-            right: 20px !important;
-          }
-        }
-      }
     }
   }
 }

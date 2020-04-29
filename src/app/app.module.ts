@@ -11,6 +11,7 @@ import { JokeComponent } from './shared/components/joke/joke.component';
 import { FavouritesComponent } from './shared/components/favourites/favourites.component';
 import { SnackbarComponent } from './shared/components/snackbar/snackbar.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { PaginationComponent } from './shared/components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     JokeComponent,
     FavouritesComponent,
     SnackbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PaginationComponent
   ],
   imports: [
     FormsModule,

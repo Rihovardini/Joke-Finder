@@ -13,5 +13,6 @@ export enum SearchOptions {
 
 export enum SearchValidationMessages {
   search = 'Text in a search field has to be in a range from 3 to 120 symbols.',
-  category = 'Please, select joke category.'
+  category = 'Please, select joke category.',
+  default = 'Please, choose one of the proposed options.'
 }

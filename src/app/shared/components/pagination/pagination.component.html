@@ -1,0 +1,11 @@
+<div class="pagination">
+  <div class="pagination__items">
+    <div *ngFor="let joke of jokesOnPage" class="pagination__joke">
+      <app-joke [joke]="joke"></app-joke>
+    </div>
+  </div>
+  <div *ngIf="recordsPerPage < jokes.length" class="pagination__buttons">
+    <button [disabled]="startIndex === 0" (click)="onPreviousPage($event)">Previous</button>
+    <button [disabled]="endIndex === jokes.length" (click)="onNextPage($event)">Next</button>
+  </div>
+</div>

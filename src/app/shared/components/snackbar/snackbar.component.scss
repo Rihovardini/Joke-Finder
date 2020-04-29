@@ -16,14 +16,16 @@
   }
 }
 
-$bar-width: 340px;
+$bar-width: 300px;
 
 .snackbar {
   visibility: hidden;
   border-radius: 10px;
   width: $bar-width;
   position: fixed;
-  left: calc(50% - #{$bar-width/2});
+  margin: 0 auto;
+  right: 0;
+  left: 0;
   bottom: 30px;
   color: $black;
   text-align: center;
@@ -35,6 +37,7 @@ $bar-width: 340px;
 
 .success {
   background-color: $green;
+  @include show;
 }
 
 .warning {
