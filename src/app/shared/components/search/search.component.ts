@@ -13,8 +13,8 @@ import { SnackbarService } from '../../services/snackbar.service';
 })
 export class SearchComponent {
   public activeSearchType: string;
+  public loading$ = this.dataSource.loading$;
   public searchForm = this.buildSearchForm();
-  public isSubmitted = false;
 
   public readonly categories$ = this.dataSource.categories$;
   public readonly optionNames = [SearchOptions.random, SearchOptions.fromCategories, SearchOptions.search];
@@ -33,8 +33,9 @@ export class SearchComponent {
     this.searchForm.patchValue({ category });
   }
 
-  public submit(): void {
-    this.isSubmitted = true;
+  public submit(event: Event): void {
+    event.preventDefault();
+    
     switch (this.activeSearchType) {
       case this.searchOptions.random:
         this.dataSource.getRandomJoke()

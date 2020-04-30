@@ -34,29 +34,34 @@ export class JokeComponent {
     const days = Math.floor(diffFromNow / times.days);
 
     if (seconds < timeBoundaries.milisecondsInSecond) {
-      return `${seconds} seconds ago`;
+      return `${seconds} second${this.getTimeEnding(seconds)} ago`;
     }
 
     if (minutes < timeBoundaries.secondsInMinute) {
-      return `${minutes} minutes ago`;
+      return `${minutes} minute${this.getTimeEnding(minutes)} ago`;
     }
 
     if (hours < timeBoundaries.hoursInDay) {
-      return `${hours} hours ago`;
+      return `${hours} hour${this.getTimeEnding(hours)} ago`;
     }
 
     if (days <= timeBoundaries.daysInMonth) {
-      return `${days} days ago`;
+      return `${days} day${this.getTimeEnding(days)} ago`;
     }
 
     if (days <= timeBoundaries.daysInYear) {
-      const weeks = Math.floor(days / timeBoundaries.daysInWeek);
-      return `${weeks} weeks ago`;
+      console.log(days / timeBoundaries.daysInMonth)
+      const months = Math.round(days / timeBoundaries.daysInMonth);
+      return `${months} month${this.getTimeEnding(months)} ago`;
     }
 
     if (days > timeBoundaries.daysInYear) {
-      const years = Math.floor(days / timeBoundaries.daysInYear);
-      return `${years} years ago`
+      const years = Math.round(days / timeBoundaries.daysInYear);
+      return `${years} year${this.getTimeEnding(years)} ago`
     }
+  }
+
+  private getTimeEnding(time: number): string {
+    return time === 1 ? '' : 's';
   }
 }

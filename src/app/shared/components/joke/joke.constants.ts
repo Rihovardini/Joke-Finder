@@ -3,7 +3,6 @@ export enum timeBoundaries {
   secondsInMinute = 60,
   minutesInHour = 60,
   hoursInDay = 24,
-  daysInWeek = 7,
   daysInMonth = 31,
   daysInYear = 365
 }

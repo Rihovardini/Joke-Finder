@@ -22,7 +22,6 @@ export class DataSourceService {
   constructor(private apiService: ApiConnectorService, private snackbarService: SnackbarService) { }
 
   public initDataSource(): void {
-    this.initHashMap();
     this.getCategories();
   }
 
@@ -106,14 +105,6 @@ export class DataSourceService {
   private getFavouritesHashMap(): [] {
     const favouritesHashMap = JSON.parse(localStorage.getItem('favoritesHashMap'));
     return favouritesHashMap || [];
-  }
-
-  private initHashMap(): void {
-    const favourites = this.favoriteJokes$.getValue();
-
-    for (const joke of favourites) {
-      this.favoriteJokesHashMap.set(joke.id, true);
-    }
   }
 
   private addFavoriteJoke(joke: Joke): void {

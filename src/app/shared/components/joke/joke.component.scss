@@ -68,6 +68,7 @@
   }
 
   &__favorite-icon {
+    cursor: pointer;
     position: absolute;
     top: $joke-heart-position2;
     right: $joke-heart-position2;

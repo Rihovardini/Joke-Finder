@@ -26,5 +26,5 @@
     </ng-container>
   </div>
 
-  <button (click)="submit()" class="search__submit">Get a joke</button>
+  <button [disabled]="(loading$ | async)" (click)="submit($event)" class="search__submit">Get a joke</button>
 </form>
