@@ -42,7 +42,7 @@ export class PaginationComponent implements OnChanges {
 
   private scrollTop(): void {
     const paginationElement = document.querySelector('.pagination');
-    paginationElement.scrollIntoView();
+    paginationElement.scrollIntoView({behavior: 'smooth'});
   }
 
   private setRecordsOnPage(): void {
