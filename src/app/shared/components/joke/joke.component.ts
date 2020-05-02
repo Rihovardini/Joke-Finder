@@ -50,14 +50,13 @@ export class JokeComponent {
     }
 
     if (days <= timeBoundaries.daysInYear) {
-      console.log(days / timeBoundaries.daysInMonth)
       const months = Math.round(days / timeBoundaries.daysInMonth);
       return `${months} month${this.getTimeEnding(months)} ago`;
     }
 
     if (days > timeBoundaries.daysInYear) {
       const years = Math.round(days / timeBoundaries.daysInYear);
-      return `${years} year${this.getTimeEnding(years)} ago`
+      return `${years} year${this.getTimeEnding(years)} ago`;
     }
   }
 
